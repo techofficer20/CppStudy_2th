@@ -9,13 +9,11 @@
 기한
 09/09 09:00
 */
-﻿2단계
+﻿3단계
 number = 1;
 n = 1;
-number += n; // 2
-n++;
-number += n; // 4
-n++;
-number += n; // 7
-...
-number += n; // 92
+if (number <= 100)
+{
+	number += n;
+	n++;
+}
