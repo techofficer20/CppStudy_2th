@@ -16,7 +16,7 @@ printf("After: %s\n", str);
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-
+void trim(char* str);
 int main(void)
 {
 	char str[100];
@@ -24,16 +24,29 @@ int main(void)
 	int i = 0;
 	fgets(str, 100, stdin);
 
-	// 입력: **&hello (*: 탭, &: 빈칸)
-	// null 값, 엔터키가 아닐 때 검사
-	// 빈칸이나 탭이면 count
-	// 단, 빈칸이나 탭이 아닌 것이 오면 반복문이 종료되어야 함.
+	printf("Before: %s\n", str);
+	trim(str);
+	printf("After: %s\n", str);
+	return 0;
+}
+void trim(char* str)
+{
+	int count = 0; // 전체 길이
+	int remove_count = 0; // 삭제 필요 길이
+	int i = 0;
+
+	while (str[i] != '\0' && str[i] != '\n')
+	{
+		count++;
+		i++;
+	}
+	i = 0;
 
 	while (str[i] != '\0' && str[i] != '\n')
 	{
 		if (str[i] == ' ' || str[i] == '\t')
 		{
-			count++;
+			remove_count++;
 		}
 		if (str[i] != ' ' && str[i] != '\t')
 		{
@@ -41,17 +54,12 @@ int main(void)
 		}
 		i++;
 	}
-	printf("제거해야 할 탭, 공백 갯수: %d\n", count);
-	printf("Before: %s\n", str);
+	i = 0;
+	while (remove_count + i <= count)
+	{
+		str[i] = str[remove_count + i];
+		i++;
+		str[count] = '\0';
+	}
 
-	str[0] = str[3];
-	str[1] = str[4];
-	str[2] = str[5];
-	str[3] = str[6];
-	str[4] = str[7];
-	str[5] = str[8];
-	str[6] = '\0';
-
-	printf("After: %s\n", str);
-	return 0;
 }
