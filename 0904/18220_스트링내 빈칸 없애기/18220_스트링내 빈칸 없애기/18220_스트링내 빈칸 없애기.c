@@ -41,7 +41,17 @@ int main(void)
 		}
 		i++;
 	}
-	printf("탭, 공백 갯수: %d\n", count);
+	printf("제거해야 할 탭, 공백 갯수: %d\n", count);
+	printf("Before: %s\n", str);
 
+	str[0] = str[3];
+	str[1] = str[4];
+	str[2] = str[5];
+	str[3] = str[6];
+	str[4] = str[7];
+	str[5] = str[8];
+	str[6] = '\0';
+
+	printf("After: %s\n", str);
 	return 0;
 }
