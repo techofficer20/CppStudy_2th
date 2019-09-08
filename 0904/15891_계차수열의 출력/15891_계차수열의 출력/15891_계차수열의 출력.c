@@ -9,11 +9,16 @@
 기한
 09/09 09:00
 */
-﻿3단계
-number = 1;
-n = 1;
-if (number <= 100)
+#include <stdio.h>
+int main(void)
 {
-	number += n;
-	n++;
+	int number = 1;
+	int n = 1;
+
+	while (number <= 100)
+	{
+		printf("%d\n", number);
+		number += n;
+		n++;
+	}
 }
