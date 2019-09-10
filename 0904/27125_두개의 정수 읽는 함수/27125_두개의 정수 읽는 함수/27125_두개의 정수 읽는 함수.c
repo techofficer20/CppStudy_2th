@@ -21,22 +21,35 @@ if (getSize( ... ) == 1 ){
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+int getSize(int* numStu, int* numCourse);
 int main(void)
 {
-	int numStu; // 학생 수
-	int numCourse; // 과목 수
+	int numStu = 0; // 학생 수
+	int numCourse = 0; // 과목 수
 
-	if (scanf("%d %d", &numStu, &numCourse) != 2)
+	if (getSize(&numStu, &numCourse) == 1)
+	{
+		printf("학생 수: %d 과목 수: %d\n", numStu, numCourse);
+	}
+	else
+	{
+		printf("실패\n");
+	}
+	return 0;
+}
+int getSize(int* numStu, int* numCourse)
+{
+	if (scanf("%d %d", numStu, numCourse) != 2)
 	{
 		return 0;
 	}
 	else
 	{
-		while (numStu <= 0 || numStu > 100 || numCourse <= 0 || numCourse > 10)
+		while (*numStu <= 0 || *numStu > 100 || *numCourse <= 0 || *numCourse > 10)
 		{
-			printf("실패\n");
-			scanf("%d %d", &numStu, &numCourse);
+			printf("틀렸습니다.\n");
+			scanf("%d %d", numStu, numCourse);
 		}
-		printf("학생 수: %d, 과목 수: %d", numStu, numCourse);
+		return 1;
 	}
 }
