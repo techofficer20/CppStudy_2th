@@ -22,15 +22,18 @@ int main(void)
 	char str[20][100]; //20 개의 문자열 배열 (각각 최대 99자)
 	char* ptr[20]; // 포인터 배열
 	char* ptr_2; // 교환 위한 포인터 배열
-	int i, j; // for문 변수
-	for (i = 0; i < 20; i++)
+	int i = 0, j = 0; // 반복문 위한 변수
+	int count = 0; // EOF 전까지 얼마나 있는지 카운트
+
+	while (count < 20 && scanf("%s", str[count]) != -1)
 	{
-		scanf("%s", str[i]);
-		ptr[i] = str[i];
+		ptr[count] = str[count];
+		count++;
 	}
-	for (j = 0; j < 20; j++)
+
+	for (j = 0; j < count; j++)
 	{
-		for (i = 0; i < 19; i++)
+		for (i = 0; i < count - 1; i++)
 		{
 			if (strcmp(ptr[i], ptr[i + 1]) == 1)
 			{
@@ -40,13 +43,15 @@ int main(void)
 			}
 		}
 	}
+
 	printf("배열에 있는 순서\n");
-	for (i = 0; i < 20; i++)
+	for (i = 0; i < count; i++)
 	{
 		printf("%s\n", str[i]);
 	}
+
 	printf("포인터를 이용해 순서대로 출력\n");
-	for (i = 0; i < 20; i++)
+	for (i = 0; i < count; i++)
 	{
 		printf("%s\n", ptr[i]);
 	}
